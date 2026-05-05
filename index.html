@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Shazeus GitHub projects portfolio">
+    <title>Shazeus Projects</title>
+    <link rel="preconnect" href="https://api.github.com">
+    <link rel="preconnect" href="https://avatars.githubusercontent.com">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Shazeus home">Shazeus</a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="https://github.com/shazeus" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">GitHub portfolio</p>
+          <h1 id="hero-title">Projects by <span id="profile-name">Shazeus</span></h1>
+          <p id="profile-bio" class="lead">A clean view of my public GitHub work, pulled live from my profile.</p>
+          <div class="actions">
+            <a class="button primary" href="#projects">View projects</a>
+            <a class="button secondary" href="https://github.com/shazeus" target="_blank" rel="noreferrer">Open GitHub</a>
+          </div>
+        </div>
+        <aside class="profile-panel" aria-label="GitHub profile summary">
+          <img id="avatar" class="avatar" src="https://avatars.githubusercontent.com/u/82624080?v=4" alt="Shazeus GitHub avatar">
+          <div>
+            <h2 id="profile-login">shazeus</h2>
+            <p id="profile-meta">Loading GitHub profile...</p>
+          </div>
+          <dl class="stats">
+            <div>
+              <dt>Repos</dt>
+              <dd id="stat-repos">-</dd>
+            </div>
+            <div>
+              <dt>Followers</dt>
+              <dd id="stat-followers">-</dd>
+            </div>
+            <div>
+              <dt>Following</dt>
+              <dd id="stat-following">-</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Public repositories</p>
+            <h2 id="projects-title">Projects</h2>
+          </div>
+          <div class="filters" aria-label="Project filters">
+            <button class="filter active" type="button" data-filter="all">All</button>
+            <button class="filter" type="button" data-filter="source">Source</button>
+            <button class="filter" type="button" data-filter="fork">Forks</button>
+          </div>
+        </div>
+        <div id="status" class="status" role="status">Loading projects...</div>
+        <div id="project-grid" class="project-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="about" class="section about" aria-labelledby="about-title">
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Simple, live, and GitHub Pages ready.</h2>
+        <p>
+          This page uses the public GitHub API to load profile details and repositories for
+          <a href="https://github.com/shazeus" target="_blank" rel="noreferrer">@shazeus</a>.
+          No backend, build step, or deployment pipeline is required.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Built for GitHub Pages.</span>
+      <a href="https://github.com/shazeus" target="_blank" rel="noreferrer">github.com/shazeus</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
