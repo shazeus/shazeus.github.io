@@ -3,19 +3,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Shazeus GitHub projects portfolio">
-    <title>Shazeus Projects</title>
+    <meta
+      name="description"
+      content="Shazeus portfolio, open-source tools, GitHub projects, and developer utilities."
+    >
+    <meta name="theme-color" content="#f4f6f3">
+    <title>Shazeus — GitHub Portfolio</title>
     <link rel="preconnect" href="https://api.github.com">
     <link rel="preconnect" href="https://avatars.githubusercontent.com">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div class="grain" aria-hidden="true"></div>
+
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="Shazeus home">Shazeus</a>
+        <a class="brand" href="#top" aria-label="Shazeus home">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>shazeus</span>
+        </a>
         <div class="nav-links">
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#index">Index</a>
+          <a href="#profile">Profile</a>
           <a href="https://github.com/shazeus" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </nav>
@@ -24,68 +34,165 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">GitHub portfolio</p>
-          <h1 id="hero-title">Projects by <span id="profile-name">Shazeus</span></h1>
-          <p id="profile-bio" class="lead">A clean view of my public GitHub work, pulled live from my profile.</p>
-          <div class="actions">
-            <a class="button primary" href="#projects">View projects</a>
-            <a class="button secondary" href="https://github.com/shazeus" target="_blank" rel="noreferrer">Open GitHub</a>
+          <p class="eyebrow">Independent open-source workbench</p>
+          <h1 id="hero-title">Practical tools, security utilities, and small systems.</h1>
+          <p id="profile-bio" class="lead">
+            A live portfolio of public GitHub projects by Shazeus, built for fast scanning and direct access.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#work">
+              <span>Explore work</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a class="button secondary" href="https://github.com/shazeus" target="_blank" rel="noreferrer">
+              <span>Open GitHub</span>
+            </a>
           </div>
         </div>
-        <aside class="profile-panel" aria-label="GitHub profile summary">
-          <img id="avatar" class="avatar" src="https://avatars.githubusercontent.com/u/82624080?v=4" alt="Shazeus GitHub avatar">
-          <div>
-            <h2 id="profile-login">shazeus</h2>
-            <p id="profile-meta">Loading GitHub profile...</p>
+
+        <aside id="profile" class="profile-stage" aria-label="GitHub profile summary">
+          <div class="avatar-shell">
+            <img
+              id="avatar"
+              class="avatar"
+              src="https://avatars.githubusercontent.com/u/82624080?v=4"
+              alt="Shazeus GitHub profile picture"
+            >
+            <span class="status-dot" aria-label="Live GitHub data"></span>
           </div>
-          <dl class="stats">
+          <div class="profile-copy">
+            <p class="eyebrow">Live profile</p>
+            <h2 id="profile-name">Shazeus</h2>
+            <p id="profile-meta">Loading GitHub profile data</p>
+          </div>
+          <dl class="profile-stats" aria-label="GitHub stats">
             <div>
               <dt>Repos</dt>
-              <dd id="stat-repos">-</dd>
+              <dd id="stat-repos">--</dd>
             </div>
             <div>
               <dt>Followers</dt>
-              <dd id="stat-followers">-</dd>
+              <dd id="stat-followers">--</dd>
             </div>
             <div>
-              <dt>Following</dt>
-              <dd id="stat-following">-</dd>
+              <dt>Updated</dt>
+              <dd id="stat-updated">--</dd>
             </div>
           </dl>
         </aside>
       </section>
 
-      <section id="projects" class="section" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Public repositories</p>
-            <h2 id="projects-title">Projects</h2>
-          </div>
-          <div class="filters" aria-label="Project filters">
-            <button class="filter active" type="button" data-filter="all">All</button>
-            <button class="filter" type="button" data-filter="source">Source</button>
-            <button class="filter" type="button" data-filter="fork">Forks</button>
-          </div>
+      <section class="signal-strip" aria-label="Portfolio signals">
+        <div>
+          <span class="signal-number" id="source-count">--</span>
+          <span class="signal-label">source repos</span>
         </div>
-        <div id="status" class="status" role="status">Loading projects...</div>
-        <div id="project-grid" class="project-grid" aria-live="polite"></div>
+        <div>
+          <span class="signal-number" id="language-count">--</span>
+          <span class="signal-label">languages</span>
+        </div>
+        <div>
+          <span class="signal-number" id="security-count">--</span>
+          <span class="signal-label">security tools</span>
+        </div>
+        <div>
+          <span class="signal-number" id="utility-count">--</span>
+          <span class="signal-label">utility projects</span>
+        </div>
       </section>
 
-      <section id="about" class="section about" aria-labelledby="about-title">
-        <p class="eyebrow">About</p>
-        <h2 id="about-title">Simple, live, and GitHub Pages ready.</h2>
-        <p>
-          This page uses the public GitHub API to load profile details and repositories for
-          <a href="https://github.com/shazeus" target="_blank" rel="noreferrer">@shazeus</a>.
-          No backend, build step, or deployment pipeline is required.
-        </p>
+      <section id="work" class="section featured-section" aria-labelledby="featured-title">
+        <div class="section-heading offset-heading">
+          <p class="eyebrow">Selected repositories</p>
+          <h2 id="featured-title">Recent tools with a clear job.</h2>
+        </div>
+        <div id="featured-status" class="status-panel loading" role="status">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div id="featured-grid" class="featured-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section lanes-section" aria-labelledby="lanes-title">
+        <div class="section-heading">
+          <p class="eyebrow">Focus lanes</p>
+          <h2 id="lanes-title">A portfolio organized by intent.</h2>
+        </div>
+        <div class="lanes">
+          <article>
+            <span class="lane-index">01</span>
+            <h3>Security research utilities</h3>
+            <p>Recon, OSINT, password, hash, scanner, and terminal-audit tools for authorized work.</p>
+          </article>
+          <article>
+            <span class="lane-index">02</span>
+            <h3>Daily developer helpers</h3>
+            <p>CLIs for notes, dotfiles, logs, mock APIs, QR generation, documentation, and Git workflows.</p>
+          </article>
+          <article>
+            <span class="lane-index">03</span>
+            <h3>Media and interface experiments</h3>
+            <p>Small TypeScript projects, GitHub Pages work, and tools with visual or editor-facing surfaces.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="index" class="section index-section" aria-labelledby="index-title">
+        <div class="section-heading index-heading">
+          <div>
+            <p class="eyebrow">Repository index</p>
+            <h2 id="index-title">Browse the full public set.</h2>
+          </div>
+          <form class="search-form" role="search">
+            <label for="repo-search">Search repositories</label>
+            <div class="search-control">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m21 21-4.3-4.3M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" />
+              </svg>
+              <input id="repo-search" type="search" placeholder="Search by name, language, or description">
+            </div>
+          </form>
+        </div>
+
+        <div class="filter-row" aria-label="Repository filters">
+          <button class="filter active" type="button" data-filter="all">All</button>
+          <button class="filter" type="button" data-filter="security">Security</button>
+          <button class="filter" type="button" data-filter="utility">Utilities</button>
+          <button class="filter" type="button" data-filter="data">Data</button>
+          <button class="filter" type="button" data-filter="media">Media</button>
+          <button class="filter" type="button" data-filter="fork">Forks</button>
+        </div>
+
+        <div id="repo-status" class="repo-status" role="status">Loading repositories</div>
+        <div id="repo-list" class="repo-list" aria-live="polite"></div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>Built for GitHub Pages.</span>
+      <p>Built as a static GitHub Pages portfolio. Data loads from the public GitHub API.</p>
       <a href="https://github.com/shazeus" target="_blank" rel="noreferrer">github.com/shazeus</a>
     </footer>
+
+    <div id="project-modal" class="project-modal" hidden>
+      <div class="modal-backdrop" data-close-modal></div>
+      <section
+        class="modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        tabindex="-1"
+      >
+        <button class="modal-close" type="button" data-close-modal aria-label="Close project details">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+        <div id="modal-content"></div>
+      </section>
+    </div>
 
     <script src="script.js"></script>
   </body>

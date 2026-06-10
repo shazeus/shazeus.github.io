@@ -1,15 +1,29 @@
-# Shazeus Projects Site
+# Shazeus GitHub Portfolio
 
 Static GitHub Pages portfolio for `shazeus`.
 
-The site fetches profile and repository data from the public GitHub API at runtime.
+The site fetches profile and repository data from the public GitHub API at runtime. No build step, backend, or package install is required.
 
-## Deploy on GitHub Pages
+## Files
 
-1. Push this folder to a GitHub repository.
-2. Open repository settings.
-3. Go to Pages.
-4. Select the `main` branch and `/root`.
-5. Save.
+```txt
+index.html
+styles.css
+script.js
+```
 
-No build step is required.
+## Local Preview
+
+```bash
+python3 -m http.server 4173
+```
+
+Open:
+
+```txt
+http://127.0.0.1:4173
+```
+
+## Deploy
+
+Push to `main`. GitHub Pages serves the site from the repository root.
