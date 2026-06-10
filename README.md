@@ -1,4 +1,4 @@
-# Shazeus GitHub Portfolio
+# (NOT WORKING ATM WILL BE FIXED SOON) Shazeus GitHub Portfolio
 
 Static GitHub Pages portfolio for `shazeus`.
 
