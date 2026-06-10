@@ -7,7 +7,7 @@
       name="description"
       content="Shazeus portfolio, open-source tools, GitHub projects, and developer utilities."
     >
-    <meta name="theme-color" content="#f4f6f3">
+    <meta name="theme-color" content="#101311">
     <title>Shazeus — GitHub Portfolio</title>
     <link rel="preconnect" href="https://api.github.com">
     <link rel="preconnect" href="https://avatars.githubusercontent.com">
@@ -19,14 +19,28 @@
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="#top" aria-label="Shazeus home">
-          <span class="brand-mark" aria-hidden="true">S</span>
-          <span>shazeus</span>
+          <img
+            class="brand-avatar"
+            src="https://avatars.githubusercontent.com/u/82624080?v=4"
+            alt=""
+          >
+          <span class="brand-copy">
+            <strong>shazeus.dev</strong>
+            <small>tools index</small>
+          </span>
         </a>
         <div class="nav-links">
           <a href="#work">Work</a>
           <a href="#index">Index</a>
           <a href="#profile">Profile</a>
           <a href="https://github.com/shazeus" target="_blank" rel="noreferrer">GitHub</a>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4" />
+              <circle cx="12" cy="12" r="3.5" />
+            </svg>
+            <span id="theme-label">Light</span>
+          </button>
         </div>
       </nav>
     </header>
@@ -53,19 +67,29 @@
         </div>
 
         <aside id="profile" class="profile-stage" aria-label="GitHub profile summary">
-          <div class="avatar-shell">
+          <div class="profile-topline">
+            <span class="profile-badge">
+              <span class="status-dot" aria-hidden="true"></span>
+              Live GitHub profile
+            </span>
+            <a href="https://github.com/shazeus" target="_blank" rel="noreferrer">github.com/shazeus</a>
+          </div>
+          <div class="profile-main">
             <img
               id="avatar"
               class="avatar"
               src="https://avatars.githubusercontent.com/u/82624080?v=4"
               alt="Shazeus GitHub profile picture"
             >
-            <span class="status-dot" aria-label="Live GitHub data"></span>
+            <div class="profile-copy">
+              <p class="eyebrow">Profile</p>
+              <h2 id="profile-name">Shazeus</h2>
+              <p id="profile-meta">Loading GitHub profile data</p>
+            </div>
           </div>
-          <div class="profile-copy">
-            <p class="eyebrow">Live profile</p>
-            <h2 id="profile-name">Shazeus</h2>
-            <p id="profile-meta">Loading GitHub profile data</p>
+          <div class="profile-focus">
+            <span>Current focus</span>
+            <p>Command-line tools, security utilities, media workflows, and practical developer systems.</p>
           </div>
           <dl class="profile-stats" aria-label="GitHub stats">
             <div>

@@ -11,10 +11,37 @@ const featuredNames = [
   "pokemon-pack-simulator",
 ];
 
+const repoCategories = {
+  LambDownload: "media",
+  "pokemon-pack-simulator": "media",
+  "shazeus.github.io": "media",
+  ghspy: "security",
+  "probe-tool": "security",
+  passforge: "security",
+  "ipgeo-cli": "security",
+  portmap: "security",
+  hashcrack: "security",
+  "webprobe-cli": "security",
+  clipvault: "security",
+  shellguard: "security",
+  reposcan: "data",
+  "vizflow-cli": "data",
+  depstree: "data",
+  logwatch: "data",
+  kubelog: "data",
+  "qk-tool": "utility",
+  qrforge: "utility",
+  "docsmith-cli": "utility",
+  "dotfiles-tool": "utility",
+  "mockapi-cli": "utility",
+  "gitforge-cli": "utility",
+};
+
 const state = {
   repos: [],
   filter: "all",
   search: "",
+  theme: "dark",
 };
 
 const elements = {
@@ -39,6 +66,9 @@ const elements = {
   modalPanel: document.querySelector(".modal-panel"),
   modalContent: document.querySelector("#modal-content"),
   modalClosers: document.querySelectorAll("[data-close-modal]"),
+  themeToggle: document.querySelector("#theme-toggle"),
+  themeLabel: document.querySelector("#theme-label"),
+  themeMeta: document.querySelector('meta[name="theme-color"]'),
 };
 
 function escapeHtml(value) {
@@ -64,19 +94,48 @@ function formatDate(value, style = "short") {
 }
 
 function categoryForRepo(repo) {
-  const haystack = `${repo.name} ${repo.description ?? ""}`.toLowerCase();
+  if (repo.fork) {
+    return "fork";
+  }
 
-  if (repo.fork) return "fork";
-  if (/(security|osint|scan|hash|pass|probe|recon|port|ip|shell|clip|audit|webprobe)/.test(haystack)) {
+  if (repoCategories[repo.name]) {
+    return repoCategories[repo.name];
+  }
+
+  const haystack = ` ${repo.name} ${repo.description ?? ""} `.toLowerCase();
+  if (/\b(security|osint|scanner|scanning|scan|hash|password|passphrase|probe|recon|portmap|ipgeo|audit|webprobe)\b/.test(haystack)) {
     return "security";
   }
-  if (/(viz|data|repo|analytics|dependency|tree|log|kube)/.test(haystack)) {
+  if (/\b(data|analytics|dependency|dependencies|tree|logs|kubernetes|docker|chart|dashboard)\b/.test(haystack)) {
     return "data";
   }
-  if (/(pokemon|download|adobe|media|pages|portfolio)/.test(haystack)) {
+  if (/\b(pokemon|download|adobe|media|pages|portfolio|simulator)\b/.test(haystack)) {
     return "media";
   }
   return "utility";
+}
+
+function categoryLabel(category) {
+  const labels = {
+    security: "Security",
+    utility: "Utility",
+    data: "Data",
+    media: "Media",
+    fork: "Fork",
+  };
+  return labels[category] || "Utility";
+}
+
+function applyTheme(theme) {
+  state.theme = theme === "light" ? "light" : "dark";
+  document.documentElement.dataset.theme = state.theme;
+  localStorage.setItem("theme", state.theme);
+  elements.themeLabel.textContent = state.theme === "dark" ? "Light" : "Dark";
+  elements.themeToggle.setAttribute(
+    "aria-label",
+    state.theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
+  );
+  elements.themeMeta.setAttribute("content", state.theme === "dark" ? "#101311" : "#f4f6f3");
 }
 
 function languageSet(repos) {
@@ -135,7 +194,7 @@ function openProject(repo) {
   const homepage = repo.homepage && repo.homepage.trim();
   elements.modalContent.innerHTML = `
     <div class="modal-kicker">
-      <span>${escapeHtml(categoryForRepo(repo))}</span>
+      <span>${escapeHtml(categoryLabel(categoryForRepo(repo)))}</span>
       <span>${escapeHtml(repo.language || "Code")}</span>
       <span>${repo.fork ? "Fork" : "Source"}</span>
     </div>
@@ -203,7 +262,7 @@ function renderFeatured() {
       <div>
         <div class="repo-kicker">
           <span>${escapeHtml(repo.language || "Code")}</span>
-          <span>${escapeHtml(categoryForRepo(repo))}</span>
+          <span>${escapeHtml(categoryLabel(categoryForRepo(repo)))}</span>
         </div>
         <h3>${escapeHtml(repo.name)}</h3>
         <p>${escapeHtml(repoDescription(repo))}</p>
@@ -262,7 +321,7 @@ function renderRepoList() {
       <div>
         <h3>${escapeHtml(repo.name)}</h3>
         <div class="repo-meta">
-          <span>${escapeHtml(categoryForRepo(repo))}</span>
+        <span>${escapeHtml(categoryLabel(categoryForRepo(repo)))}</span>
           <span>${repo.fork ? "Fork" : "Source"}</span>
         </div>
       </div>
@@ -298,6 +357,13 @@ function wireSearch() {
   elements.searchInput.addEventListener("input", (event) => {
     state.search = event.target.value;
     renderRepoList();
+  });
+}
+
+function wireTheme() {
+  applyTheme(localStorage.getItem("theme") || "dark");
+  elements.themeToggle.addEventListener("click", () => {
+    applyTheme(state.theme === "dark" ? "light" : "dark");
   });
 }
 
@@ -366,5 +432,6 @@ async function loadGitHub() {
 
 wireFilters();
 wireSearch();
+wireTheme();
 wireProjectInspection();
 loadGitHub();
